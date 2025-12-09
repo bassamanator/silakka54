@@ -28,3 +28,6 @@
 #define SPLIT_USB_TIMEOUT_POLL 10
 #define SPLIT_WATCHDOG_ENABLE
 #define SPLIT_WATCHDOG_TIMEOUT 3000
+
+// Comment out the following line when compiling `.uf2` for the left side
+#define MASTER_RIGHT

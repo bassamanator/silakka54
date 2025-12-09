@@ -1,0 +1,11 @@
+{
+	"no-inline-html": false,
+	"first-line-h1": false,
+	"descriptive-link-text": false,
+	"no-blanks-blockquote": false,
+	"fenced-code-language": false,
+	"table-column-count": false,
+	"single-h1": false,
+	"no-bare-urls": false,
+	"line-length": false
+}

@@ -1,0 +1,9 @@
+{
+	"cSpell.words": ["cephalus", "Corne", "hotswap", "REVIUNG", "silakka", "Squalius"],
+	"editor.formatOnSave": false,
+	// "markdownlint.run":
+	"[markdown]": {
+		"editor.formatOnSave": false
+		// "editor.defaultFormatter":null
+	}
+}

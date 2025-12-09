@@ -2,3 +2,7 @@ VIA_ENABLE = yes
 VIAL_ENABLE = yes
 CAPS_WORD_ENABLE = yes
 LAYER_LOCK_ENABLE = yes
+# new
+TAP_DANCE_ENABLE = yes
+LEADER_ENABLE = yes
+LTO_ENABLE = yes # Optimize code

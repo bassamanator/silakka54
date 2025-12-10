@@ -31,3 +31,8 @@
 
 // Comment out the following line when compiling `.uf2` for the left side
 #define MASTER_RIGHT
+
+#define TAPPING_TERM 220 // Default 200
+#define QUICK_TAP_TERM 50 // Default TAPPING_TERM
+
+#define PERMISSIVE_HOLD

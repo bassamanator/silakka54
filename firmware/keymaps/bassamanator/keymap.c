@@ -1,23 +1,38 @@
 #include QMK_KEYBOARD_H
 
-// Left-hand home row mods
-#define GUI_A LGUI_T(KC_A)
-#define ALT_S LALT_T(KC_S)
-#define CTL_D LCTL_T(KC_D)
-#define SFT_F LSFT_T(KC_F)
+// NOTE {modifier}_{key}_{Q,E}; Q = querty, E = enthium
 
-// Right-hand home row mods
-#define SFT_J RSFT_T(KC_J)
-#define CTL_K RCTL_T(KC_K)
-#define ALT_L LALT_T(KC_L)
-#define GUI_SCLN RGUI_T(KC_SCLN)
+// Left-hand home row mods; QUERTY
+#define GUI_A_Q LGUI_T(KC_A)
+#define ALT_S_Q LALT_T(KC_S)
+#define CTL_D_Q LCTL_T(KC_D)
+#define SFT_F_Q LSFT_T(KC_F)
+
+// Right-hand home row mods; QUERTY
+#define SFT_J_Q RSFT_T(KC_J)
+#define CTL_K_Q RCTL_T(KC_K)
+#define ALT_L_Q LALT_T(KC_L)
+#define GUI_SCLN_Q RGUI_T(KC_SCLN)
+
+// Left-hand home row mods; ENTHIUM
+#define GUI_C_E LGUI_T(KC_C)
+#define ALT_I_E LALT_T(KC_I)
+#define CTL_A_E LCTL_T(KC_A)
+#define SFT_E_E LSFT_T(KC_E)
+
+// Right-hand home row mods; ENTHIUM
+#define SFT_H_E RSFT_T(KC_H)
+#define CTL_T_E RCTL_T(KC_T)
+#define ALT_N_E LALT_T(KC_N)
+#define GUI_S_E RGUI_T(KC_S)
 
 enum layers {
     _QUERTY_PURE,
     _QUERTY_ADJ,
+    _ENTHIUM,
     _FUN,
     _SYM,
-    _UTIL = 7
+    _UTIL
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -25,14 +40,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QUERTY_PURE] = LAYOUT(
         KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_BSPC,
-        KC_LCTL, GUI_A,   ALT_S,   CTL_D,   SFT_F,   KC_G,                               KC_H,    SFT_J,   CTL_K,   ALT_L,   GUI_SCLN, KC_QUOT,
+        KC_LCTL, GUI_A_Q,   ALT_S_Q,   CTL_D_Q,   SFT_F_Q,   KC_G,                               KC_H,    SFT_J_Q,   CTL_K_Q,   ALT_L_Q,   GUI_SCLN_Q, KC_QUOT,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                               KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
                                             KC_LGUI, MO(1), KC_SPC,              KC_ENT,  KC_RCTL, KC_RALT
+    ),
+    [_ENTHIUM] = LAYOUT(
+        QK_BOOT,  QK_RBT,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                                            KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS,  KC_TRNS,  KC_TRNS
     ),
     [_QUERTY_ADJ] = LAYOUT(
         KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_BSPC,
-        KC_LCTL, GUI_A,   ALT_S,   CTL_D,   SFT_F,   KC_G,                               KC_H,    SFT_J,   CTL_K,   ALT_L,   GUI_SCLN, KC_QUOT,
+        KC_LCTL, GUI_A_Q,   ALT_S_Q,   CTL_D_Q,   SFT_F_Q,   KC_G,                               KC_H,    SFT_J_Q,   CTL_K_Q,   ALT_L_Q,   GUI_SCLN_Q, KC_QUOT,
         KC_CAPS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                               KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
                                             KC_LGUI, MO(1), KC_SPC,              KC_ENT,  KC_RCTL, KC_RALT
     ),

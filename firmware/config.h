@@ -37,3 +37,7 @@
 #define QUICK_TAP_TERM 50 // Default TAPPING_TERM
 
 #define PERMISSIVE_HOLD
+
+// NOTE QK_GESC https://docs.qmk.fm/features/grave_esc
+#define GRAVE_ESC_ALT_OVERRIDE // Always send Escape if Alt is pressed
+#define GRAVE_ESC_CTRL_OVERRIDE // Always send Escape if Control is pressed

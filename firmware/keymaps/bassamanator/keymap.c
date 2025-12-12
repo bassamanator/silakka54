@@ -81,6 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
+// NOTE For modifiers, reduce tapping term
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case QK_MOD_TAP ... QK_MOD_TAP_MAX:
@@ -89,3 +90,13 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM;
     }
 }
+
+/* https://docs.qmk.fm/features/key_overrides#simple-example */
+const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
+const key_override_t capslock_key_override = ko_make_basic(MOD_MASK_GUI, KC_TAB, KC_CAPS);
+
+// This globally defines all key overrides to be used
+const key_override_t *key_overrides[] = {
+    &delete_key_override,
+    &capslock_key_override
+};

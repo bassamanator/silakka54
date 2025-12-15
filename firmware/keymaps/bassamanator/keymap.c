@@ -29,10 +29,10 @@
 #define LT_1_Y LT(1, KC_Y)
 
 enum layers {
+    _QUERTY,
+    _QUERTY_ADJ,
     _ENTHIUM,
     _NAV,
-    // _QUERTY,
-    // _QUERTY_ADJ,
     // _FUN,
     // _SYM,
     // _UTIL,

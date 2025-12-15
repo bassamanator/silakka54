@@ -33,12 +33,9 @@
 #define MASTER_RIGHT
 
 #define TAPPING_TERM 220 // Default 200
-#define TAPPING_TERM_PER_KEY
-// #if defined(TAPPING_TERM_PER_KEY)
-//     #undef TAPPING_TERM_PER_KEY
-// #else
-//     #define TAPPING_TERM_PER_KEY
-// #endif
+#ifndef TAPPING_TERM_PER_KEY
+    #define TAPPING_TERM_PER_KEY
+#endif
 #define QUICK_TAP_TERM 50 // Default is TAPPING_TERM
 
 #define PERMISSIVE_HOLD

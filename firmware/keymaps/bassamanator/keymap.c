@@ -31,7 +31,6 @@
 
 enum layers {
     _QUERTY,
-    _QUERTY_ADJ,
     _ENTHIUM,
     _NAV,
     // _FUN,
@@ -49,13 +48,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LSFT , KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                            KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSFT,
                                             KC_LGUI , KC_LBRC, KC_SPC ,         QK_GESC , KC_RBRC , KC_RALT
     ),
-    [_QUERTY_ADJ] = LAYOUT(
-        KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,
-        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_BSPC,
-        KC_LCTL, GUI_A_Q,   ALT_S_Q,   CTL_D_Q,   SFT_F_Q,   KC_G,                               KC_H,    SFT_J_Q,   CTL_K_Q,   ALT_L_Q,   GUI_SCLN_Q, KC_QUOT,
-        KC_CAPS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                               KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
-                                            KC_LGUI, MO(1), KC_SPC,              KC_ENT,  KC_RCTL, KC_RALT
-    ),
     [_ENTHIUM] = LAYOUT(
         KC_TAB  , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                            KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,
         KC_NO   , KC_Q   , LT1_Y_E, KC_O   , KC_U   , KC_EQL ,                            KC_X   , KC_L   , KC_D   , KC_W   , KC_Z   , KC_BSLS,
@@ -65,8 +57,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_NAV] = LAYOUT(
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_BSPC,
-        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_HOME, KC_UP  , KC_END , KC_PGUP, KC_NO  ,
-        KC_NO   , KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO  ,                            KC_NO  , KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_NO  ,
+        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_EQL , KC_HOME, KC_UP  , KC_END , KC_PGUP, KC_NO  ,
+        KC_NO   , KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO  ,                            KC_MINS, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_NO  ,
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_DEL , KC_CAPS, KC_INS , KC_NO  , KC_ENT ,
                                             KC_NO   , KC_NO  , KC_SPC ,         QK_GESC , KC_NO  , QK_LLCK
     ),

@@ -6,3 +6,4 @@ LEADER_ENABLE = yes
 LTO_ENABLE = yes # Optimize code
 COMBO_ENABLE = yes
 KEY_OVERRIDE_ENABLE = yes
+MOUSEKEY_ENABLE = yes

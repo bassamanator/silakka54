@@ -27,36 +27,38 @@
 #define GUI_S_E RGUI_T(KC_S)
 
 enum layers {
-    _QUERTY,
-    _QUERTY_ADJ,
+    // _QUERTY,
+    // _QUERTY_ADJ,
     _ENTHIUM,
     _FUN,
     _SYM,
-    _UTIL
+    _UTIL,
+    _NAV,
+    _MOUSE,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    [_QUERTY] = LAYOUT(
-        QK_GESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,
-        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_BSPC,
-        KC_LCTL, GUI_A_Q,   ALT_S_Q,   CTL_D_Q,   SFT_F_Q,   KC_G,                               KC_H,    SFT_J_Q,   CTL_K_Q,   ALT_L_Q,   GUI_SCLN_Q, KC_QUOT,
-        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                               KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
-                                            KC_LGUI, MO(1), KC_SPC,              KC_ENT,  KC_RCTL, KC_RALT
-    ),
-    [_QUERTY_ADJ] = LAYOUT(
-        KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,
-        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_BSPC,
-        KC_LCTL, GUI_A_Q,   ALT_S_Q,   CTL_D_Q,   SFT_F_Q,   KC_G,                               KC_H,    SFT_J_Q,   CTL_K_Q,   ALT_L_Q,   GUI_SCLN_Q, KC_QUOT,
-        KC_CAPS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                               KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
-                                            KC_LGUI, MO(1), KC_SPC,              KC_ENT,  KC_RCTL, KC_RALT
-    ),
+    // [_QUERTY] = LAYOUT(
+    //     QK_GESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,
+    //     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_BSPC,
+    //     KC_LCTL, GUI_A_Q,   ALT_S_Q,   CTL_D_Q,   SFT_F_Q,   KC_G,                               KC_H,    SFT_J_Q,   CTL_K_Q,   ALT_L_Q,   GUI_SCLN_Q, KC_QUOT,
+    //     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                               KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
+    //                                         KC_LGUI, MO(1), KC_SPC,              KC_ENT,  KC_RCTL, KC_RALT
+    // ),
+    // [_QUERTY_ADJ] = LAYOUT(
+    //     KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,
+    //     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_BSPC,
+    //     KC_LCTL, GUI_A_Q,   ALT_S_Q,   CTL_D_Q,   SFT_F_Q,   KC_G,                               KC_H,    SFT_J_Q,   CTL_K_Q,   ALT_L_Q,   GUI_SCLN_Q, KC_QUOT,
+    //     KC_CAPS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                               KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
+    //                                         KC_LGUI, MO(1), KC_SPC,              KC_ENT,  KC_RCTL, KC_RALT
+    // ),
     [_ENTHIUM] = LAYOUT(
         KC_TAB,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_BSPC,
         KC_NO,   KC_Q,    KC_Y,    KC_O,    KC_U,    KC_EQL,                              KC_X,    KC_L,    KC_D,    KC_W,    KC_Z,     KC_BSLS,
         KC_B,    GUI_C_E, ALT_I_E, CTL_A_E, SFT_E_E, KC_MINS,                             KC_K,    SFT_H_E, CTL_T_E, ALT_N_E, GUI_S_E,  KC_F,
         KC_NO,   KC_QUOT, KC_COMM, KC_DOT,  KC_SCLN, KC_SLSH,                             KC_J,    KC_M,    KC_G,    KC_P,    KC_V,     KC_ENT,
-                                            KC_NO,   MO(1),  KC_SPC,             QK_GESC, KC_R,    KC_NO
+                                            KC_NO,   MO(1),  KC_SPC,             QK_GESC, KC_R,    QK_LEAD
     ),
     [_FUN] = LAYOUT(
         KC_GRV,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                              KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
@@ -66,6 +68,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS,  KC_TRNS,  KC_TRNS
     ),
     [_SYM] = LAYOUT(
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                                            KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS,  KC_TRNS,  KC_TRNS
+    ),
+    [_NAV] = LAYOUT(
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                                            KC_TRNS, KC_TRNS, KC_TRNS,           KC_TRNS,  KC_TRNS,  KC_TRNS
+    ),
+    [_BLANK] = LAYOUT(
         KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -100,3 +116,15 @@ const key_override_t *key_overrides[] = {
     &delete_key_override,
     &capslock_key_override
 };
+
+// NOTE leader key
+void leader_start_user(void) {
+    // Do something when the leader key is pressed
+}
+
+void leader_end_user(void) {
+    if (leader_sequence_one_key(KC_1)) {
+        // Leader, a, s => GUI+S
+        tap_code16(TG(1));
+    }
+}

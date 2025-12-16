@@ -29,12 +29,13 @@
 #define SPLIT_WATCHDOG_ENABLE
 #define SPLIT_WATCHDOG_TIMEOUT 3000
 
+// NOTE Only adjust here!
 // Comment out the following line when compiling `.uf2` for the left side
 #define MASTER_RIGHT
 
 #define TAPPING_TERM 220 // Default 200
 #ifndef TAPPING_TERM_PER_KEY
-    #define TAPPING_TERM_PER_KEY
+#define TAPPING_TERM_PER_KEY
 #endif
 #define QUICK_TAP_TERM 50 // Default is TAPPING_TERM
 

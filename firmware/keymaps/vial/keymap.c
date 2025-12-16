@@ -100,18 +100,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // )
 };
 
-/* https://docs.qmk.fm/features/key_overrides#simple-example */
-const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
-const key_override_t capslock_key_override = ko_make_basic(MOD_MASK_GUI, KC_TAB, KC_CAPS);
-const key_override_t printscreen_key_override = ko_make_basic(MOD_MASK_SA, KC_P, KC_PSCR);
-
-// This globally defines all key overrides to be used
-const key_override_t *key_overrides[] = {
-    &delete_key_override,
-    &capslock_key_override,
-    &printscreen_key_override
-};
-
 const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
     LAYOUT(
         'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R', 

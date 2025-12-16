@@ -109,20 +109,3 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM;
     }
 }
-
-/* https://docs.qmk.fm/features/key_overrides#simple-example */
-const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
-const key_override_t capslock_key_override = ko_make_basic(MOD_MASK_GUI, KC_TAB, KC_CAPS);
-const key_override_t printscreen_key_override = ko_make_basic(MOD_MASK_SA, KC_P, KC_PSCR);
-
-// This globally defines all key overrides to be used
-const key_override_t *key_overrides[] = {
-    &delete_key_override,
-    &capslock_key_override,
-    &printscreen_key_override
-};
-
-// const uint16_t PROGMEM test_combo1[] = {KC_A, KC_B, COMBO_END};
-combo_t key_combos[] = {
-    // COMBO(test_combo1, KC_ESC),
-};

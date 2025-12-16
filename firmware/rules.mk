@@ -1,8 +1,5 @@
 CAPS_WORD_ENABLE = yes
 LAYER_LOCK_ENABLE = yes
 
-# TAP_DANCE_ENABLE = yes
 LEADER_ENABLE = yes
 LTO_ENABLE = yes # Optimize code
-COMBO_ENABLE = yes
-KEY_OVERRIDE_ENABLE = yes

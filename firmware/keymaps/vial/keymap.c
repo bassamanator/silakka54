@@ -31,7 +31,7 @@
 #define LT2_D_E LT(2, KC_D) // _FUN
 #define LT3_V_E LT(3, KC_V) // _UTIL
 #define LT4_O_E LT(4, KC_O) // _MOUSE
-
+#define L_BASE DF(0)
 
 enum layers {
     // _QUERTY,
@@ -57,35 +57,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB  , KC_Q   , LT1_Y_E, LT4_O_E, KC_U   , KC_EQL ,                            KC_X   , KC_L   , LT2_D_E, KC_W   , KC_Z   , KC_BSLS,
         KC_B    , GUI_C_E, ALT_I_E, CTL_A_E, SFT_E_E, KC_MINS,                            KC_K   , SFT_H_E, CTL_T_E, ALT_N_E, GUI_S_E, KC_F   ,
         KC_NO   , KC_QUOT, KC_COMM, KC_DOT , KC_SCLN, KC_SLSH,                            KC_J   , KC_M   , KC_G   , KC_P   , LT3_V_E, KC_ENT ,
-                                            KC_NO   , KC_ESC , KC_SPC ,         KC_SPC  , KC_R   , KC_NO
+                                            KC_NO   , KC_ESC , KC_SPC ,          KC_R  , KC_NO   , KC_NO
     ),
     [_NAV] = LAYOUT(
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
-        KC_TRNS , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_PGUP, KC_HOME, KC_UP  , KC_END , KC_DEL , KC_NO  ,
-        KC_NO   , KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO  ,                            KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_CAPS, KC_INS ,
+        KC_TRNS , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_PGUP, KC_HOME, KC_UP  , KC_END , KC_CAPS, KC_NO  ,
+        KC_NO   , KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO  ,                            KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_DEL , KC_INS ,
         KC_NO   , KC_NO  , KC_CUT , KC_COPY, KC_PSTE, KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
-                                            KC_NO   , KC_TRNS, KC_TRNS ,         KC_PSCR, KC_NO  , QK_LLCK
+                                            KC_NO   , KC_TRNS, KC_TRNS ,         KC_PSCR, L_BASE , QK_LLCK
     ),
     [_FUN] = LAYOUT(
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
         KC_TRNS , KC_F9  , KC_F10 , KC_F11 , KC_F12 , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
         KC_NO   , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
         KC_NO   , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
-                                            KC_NO   , KC_TRNS, KC_TRNS ,         KC_PSCR, DF(0)  , QK_LLCK
+                                            KC_NO   , KC_TRNS, KC_TRNS ,         KC_PSCR, L_BASE , QK_LLCK
     ),
     [_UTIL] = LAYOUT(
         KC_NO   , QK_RBT , QK_BOOT, KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
         KC_R    , KC_E   , KC_I   , KC_S   , KC_U   , KC_B   ,                            KC_NO  , KC_NO  , KC_NO  , KC_RALT, KC_NO  , KC_NO  ,
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
-                                            KC_NO   , KC_NO  , KC_NO  ,          KC_PSCR, DF(0)  , QK_LLCK
+                                            KC_NO   , KC_NO  , KC_NO  ,          KC_PSCR, L_BASE , QK_LLCK
     ),
     [_MOUSE] = LAYOUT(
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
         KC_NO   , KC_NO  , KC_BTN2, KC_NO  , KC_BTN1, KC_NO  ,                            KC_WH_U, KC_BTN1, KC_MS_U, KC_BTN2, KC_WH_L, KC_NO  ,
-        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_R, KC_NO  , 
+        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_R, KC_NO  ,
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
-                                            KC_NO   , KC_TRNS, KC_TRNS,          KC_NO  , DF(0) , QK_LLCK
+                                            KC_NO   , KC_TRNS, KC_TRNS,          KC_NO  , L_BASE, QK_LLCK
     ),
     [_SYM] = LAYOUT(
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,

@@ -41,12 +41,8 @@
 
 #define PERMISSIVE_HOLD
 
-// NOTE QK_GESC https://docs.qmk.fm/features/grave_esc
-#define GRAVE_ESC_ALT_OVERRIDE // Always send Escape if Alt is pressed
-#define GRAVE_ESC_CTRL_OVERRIDE // Always send Escape if Control is pressed
-
 #define LEADER_PER_KEY_TIMING
 // #define LEADER_TIMEOUT 250
 #define LEADER_NO_TIMEOUT
 
-#define LAYER_LOCK_IDLE_TIMEOUT 60000
+#define LAYER_LOCK_IDLE_TIMEOUT 120000

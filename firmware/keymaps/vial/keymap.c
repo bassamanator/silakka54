@@ -26,16 +26,20 @@
 #define ALT_N_E LALT_T(KC_N)
 #define GUI_S_E RGUI_T(KC_S)
 
-#define LT1_W_Q LT(1, KC_W)
-#define LT1_Y_E LT(1, KC_Y)
+// #define LT1_O_Q LT(1, KC_O) // _NAV
+#define LT1_Y_E LT(1, KC_Y) // _NAV
+#define LT2_W_E LT(2, KC_W) // _FUN
+#define LT3_V_E LT(3, KC_V) // _UTIL
+#define LT4_O_E LT(4, KC_O) // _MOUSE
+
 
 enum layers {
     // _QUERTY,
-    _ENTHIUM,
-    _NAV,
-    _FUN,
-    _UTIL,
-    _MOUSE,
+    _ENTHIUM = 0,
+    _NAV = 1,
+    _FUN = 2,
+    _UTIL = 3,
+    _MOUSE = 4,
     // _SYM,
 };
 
@@ -50,13 +54,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // ),
     [_ENTHIUM] = LAYOUT(
         KC_GRV  , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                            KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,
-        KC_TAB  , KC_Q   , LT1_Y_E, KC_O   , KC_U   , KC_EQL ,                            KC_X   , KC_L   , KC_D   , KC_W   , KC_Z   , KC_BSLS,
+        KC_TAB  , KC_Q   , LT1_Y_E, LT4_O_E, KC_U   , KC_EQL ,                            KC_X   , KC_L   , KC_D   , LT2_W_E, KC_Z   , KC_BSLS,
         KC_B    , GUI_C_E, ALT_I_E, CTL_A_E, SFT_E_E, KC_MINS,                            KC_K   , SFT_H_E, CTL_T_E, ALT_N_E, GUI_S_E, KC_F   ,
         KC_NO   , KC_QUOT, KC_COMM, KC_DOT , KC_SCLN, KC_SLSH,                            KC_J   , KC_M   , KC_G   , KC_P   , KC_V   , KC_ENT ,
                                             KC_NO   , QK_GESC, KC_SPC ,         KC_SPC  , KC_R   , KC_NO
     ),
     [_NAV] = LAYOUT(
-        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_BSPC,
+        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_EQL , KC_HOME, KC_UP  , KC_END , KC_PGUP, KC_NO  ,
         KC_NO   , KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO  ,                            KC_MINS, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, KC_NO  ,
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_DEL , KC_CAPS, KC_INS , KC_NO  , KC_ENT ,
@@ -77,6 +81,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             KC_NO   , KC_NO  , KC_NO  ,          KC_NO  , DF(0)  , QK_LLCK
     ),
     [_MOUSE] = LAYOUT(
+        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
+        KC_NO   , KC_NO  , KC_BTN2, KC_NO  , KC_BTN1, KC_NO  ,                            KC_WH_U, KC_BTN1, KC_MS_U, KC_BTN2, KC_WH_L, KC_NO  ,
+        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_R, KC_NO  , 
+        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
+                                            KC_NO   , KC_TRNS, KC_TRNS,          KC_TRNS , DF(0) , QK_LLCK
+    ),
+    [5] = LAYOUT(
+        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
+        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
+        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
+        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
+                                            KC_NO   , KC_NO  , KC_NO  ,          KC_NO  , KC_NO  , KC_NO
+    ),
+    [6] = LAYOUT(
+        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
+        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
+        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
+        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
+                                            KC_NO   , KC_NO  , KC_NO  ,          KC_NO  , KC_NO  , KC_NO
+    ),    
+    [7] = LAYOUT(
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,

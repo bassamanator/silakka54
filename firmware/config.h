@@ -33,18 +33,6 @@
 // Comment out the following line when compiling `.uf2` for the left side
 #define MASTER_RIGHT
 
-#define TAPPING_TERM 220 // Default 200
-#ifndef TAPPING_TERM_PER_KEY
-#define TAPPING_TERM_PER_KEY
-#endif
-#define QUICK_TAP_TERM 50 // Default is TAPPING_TERM
-
-#define PERMISSIVE_HOLD true
-
-#define LAYER_LOCK_IDLE_TIMEOUT 120000
-
-#define NKRO_DEFAULT_ON true
-
-#define MOUSEKEY_MOVE_DELTA = 4
-#define MOUSEKEY_MAX_SPEED = 7
-#define MOUSEKEY_WHEEL_MAX_SPEED = 4
+#define MOUSEKEY_MOVE_DELTA 4
+#define MOUSEKEY_MAX_SPEED 7
+#define MOUSEKEY_WHEEL_MAX_SPEED 4

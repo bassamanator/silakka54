@@ -3,6 +3,12 @@
     "keyboard_name": "silakka54",
     "maintainer": "Squalius-cephalus",
     "bootloader": "rp2040",
+    "build": {
+        "lto": true
+    },
+    "caps_word": {
+        "enabled": true
+    },
     "diode_direction": "COL2ROW",
     "features": {
         "bootmagic": true,
@@ -11,6 +17,14 @@
         "extrakey": true,
         "mousekey": true,
         "nkro": true
+    },
+    "host": {
+        "default": {
+            "nkro": true
+        }
+    },
+    "layer_lock": {
+        "timeout": 120000
     },
     "split": {
         "enabled": true,
@@ -23,6 +37,12 @@
         "rows": ["GP2", "GP3", "GP4", "GP5","GP6"]
     },
     "processor": "RP2040",
+    "tapping": {
+        "permissive_hold": true,
+        "permissive_hold_per_key":true,
+        "term": 220,
+        "term_per_key":true
+    },
     "url": "https://github.com/Squalius-cephalus/silakka54",
     "usb": {
         "device_version": "1.0.0",

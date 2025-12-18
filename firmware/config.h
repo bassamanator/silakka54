@@ -39,6 +39,12 @@
 #endif
 #define QUICK_TAP_TERM 50 // Default is TAPPING_TERM
 
-#define PERMISSIVE_HOLD
+#define PERMISSIVE_HOLD true
 
 #define LAYER_LOCK_IDLE_TIMEOUT 120000
+
+#define NKRO_DEFAULT_ON true
+
+#define MOUSEKEY_MOVE_DELTA = 4
+#define MOUSEKEY_MAX_SPEED = 7
+#define MOUSEKEY_WHEEL_MAX_SPEED = 4

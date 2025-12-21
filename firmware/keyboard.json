@@ -23,9 +23,6 @@
             "nkro": true
         }
     },
-    "layer_lock": {
-        "timeout": 120000
-    },
     "split": {
         "enabled": true,
         "serial": {

@@ -45,6 +45,7 @@ enum layers {
 #define LT6_Z_E LT(_QUERTY, KC_Z)
 #define LT7_V_E LT(_UTIL, KC_V)
 #define L_BASE DF(0)
+#define FIND KC_LCTL(KC_F)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -52,14 +53,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_GRV  , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                            KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,
         KC_TAB  , KC_Q   , LT1_Y_E, LT3_O_E, KC_U   , KC_EQL ,                            KC_X   , KC_L   , LT2_D_E, LT4_W_E, LT6_Z_E   , KC_BSLS,
         KC_B    , GUI_C_E, ALT_I_E, CTL_A_E, SFT_E_E, KC_MINS,                            KC_K   , SFT_H_E, CTL_T_E, ALT_N_E, GUI_S_E, KC_F   ,
-        KC_DEL   , KC_QUOT, KC_COMM, KC_DOT , KC_SCLN, KC_SLSH,                            KC_J   , KC_M   , KC_G   , KC_P   , LT7_V_E, KC_ENT ,
-                                            KC_NO   , KC_ESC , KC_SPC ,          KC_R  , KC_NO   , KC_NO
+        KC_DEL   , KC_QUOT, KC_COMM, KC_DOT , KC_SCLN, KC_SLSH,                           KC_J   , KC_M   , KC_G   , KC_P   , LT7_V_E, KC_ENT ,
+                                            KC_NO   , KC_ESC , KC_SPC ,          KC_SPC  , KC_R , KC_NO
     ),
     [_NAV] = LAYOUT(
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
         KC_TRNS , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_PGUP, KC_HOME, KC_UP  , KC_END , KC_CAPS, KC_NO  ,
         KC_NO   , KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO  ,                            KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_DEL , KC_INS ,
-        KC_NO   , KC_NO  , KC_CUT , KC_COPY, KC_PSTE, KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
+        KC_NO   , KC_NO  , KC_CUT , KC_COPY, KC_PSTE, FIND   ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
                                             KC_NO   , KC_TRNS, KC_TRNS ,         KC_PSCR, L_BASE , QK_LLCK
     ),
     [_FUN] = LAYOUT(

@@ -74,8 +74,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_MOUSE] = LAYOUT(
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
-        KC_NO   , KC_NO  , MS_BTN2, KC_NO  , MS_BTN1, KC_NO  ,                            MS_WHLU, MS_BTN1, MS_UP, MS_BTN2, MS_WHLL, KC_NO  ,
-        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            MS_WHLU, MS_LEFT, MS_DOWN, MS_RGHT, MS_WHLR, KC_NO  ,
+        KC_NO   , KC_NO  , MS_BTN2, KC_NO  , MS_BTN1, KC_NO  ,                            MS_WHLU, MS_BTN1, MS_UP  , MS_BTN2, MS_WHLL, KC_NO  ,
+        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            MS_WHLD, MS_LEFT, MS_DOWN, MS_RGHT, MS_WHLR, KC_NO  ,
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
                                             KC_NO   , KC_TRNS, KC_TRNS,          KC_NO  , L_BASE, QK_LLCK
     ),

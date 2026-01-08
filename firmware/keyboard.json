@@ -35,6 +35,7 @@
     },
     "processor": "RP2040",
     "tapping": {
+        "chordal_hold":true,
         "permissive_hold": true,
         "permissive_hold_per_key":true,
         "term": 220,

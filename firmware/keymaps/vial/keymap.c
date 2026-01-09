@@ -41,7 +41,7 @@ enum layers {
 #define LT1_Y_E LT(_NAV, KC_Y)
 #define LT2_D_E LT(_FUN, KC_D)
 #define LT3_O_E LT(_MOUSE, KC_O)
-#define LT4_W_E LT(_SYM, KC_W)
+#define LT4_P_E LT(_SYM, KC_P)
 #define LT5_X_E LT(_GAMING, KC_X)
 #define LT6_Z_E LT(_QUERTY, KC_Z)
 #define LT7_V_E LT(_UTIL, KC_V)
@@ -53,9 +53,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_ENTHIUM] = LAYOUT(
         KC_GRV  , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                            KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,
-        KC_TAB  , KC_Q   , LT1_Y_E, LT3_O_E, KC_U   , KC_EQL ,                            LT5_X_E, KC_L   , LT2_D_E, LT4_W_E, LT6_Z_E, KC_BSLS,
-        KC_B    , GUI_C_E, ALT_I_E, CTL_A_E, SFT_E_E, KC_MINS,                            KC_K   , SFT_H_E, CTL_T_E, ALT_N_E, GUI_S_E, KC_F   ,
-        KC_DEL  , KC_QUOT, KC_COMM, KC_DOT , KC_SLSH, KC_SCLN,                            KC_J   , KC_M   , KC_G   , KC_P   , LT7_V_E, KC_ENT ,
+        KC_TAB  , KC_Q   , LT1_Y_E, LT3_O_E, KC_U   , KC_EQL ,                            LT5_X_E, KC_L   , LT2_D_E, LT4_P_E, LT6_Z_E, KC_BSLS,
+        KC_B    , GUI_C_E, ALT_I_E, CTL_A_E, SFT_E_E, KC_MINS,                            KC_K   , SFT_H_E, CTL_T_E, ALT_N_E, GUI_S_E, KC_W   ,
+        KC_DEL  , KC_QUOT, KC_COMM, KC_DOT , KC_SLSH, KC_SCLN,                            KC_J   , KC_M   , KC_G   , KC_F   , LT7_V_E, KC_ENT ,
                                             KC_ESC  ,KC_CAPS , KC_SPC ,           KC_SPC  , KC_R , KC_NO
     ),
     [_NAV] = LAYOUT(

@@ -1,6 +1,8 @@
 #include QMK_KEYBOARD_H
 
 // NOTE {modifier}_{key}_{Q,E}; Q = querty, E = enthium
+// NOTE in many instances, KC_CAPS and KC_ESC are used interchangeably while i adjust to the new layout
+// NOTE max variable length should not exceed 7 characters
 
 // Left-hand home row mods; QUERTY
 #define GUI_A_Q LGUI_T(KC_A)
@@ -56,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB  , KC_Q   , LT1_Y_E, LT3_O_E, KC_U   , KC_EQL ,                            LT5_X_E, KC_L   , LT2_D_E, LT4_P_E, LT6_Z_E, KC_BSLS,
         KC_B    , GUI_C_E, ALT_I_E, CTL_A_E, SFT_E_E, KC_MINS,                            KC_K   , SFT_H_E, CTL_T_E, ALT_N_E, GUI_S_E, KC_W   ,
         KC_DEL  , KC_QUOT, KC_COMM, KC_DOT , KC_SLSH, KC_SCLN,                            KC_J   , KC_M   , KC_G   , KC_F   , LT7_V_E, KC_ENT ,
-                                            KC_ESC  ,KC_CAPS , KC_SPC ,           KC_SPC  , KC_R , KC_NO
+                                             KC_NO  , KC_CAPS, KC_SPC ,           KC_SPC  , KC_R , KC_NO
     ),
     [_NAV] = LAYOUT(
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
@@ -84,21 +86,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_HASH , KC_DLR , KC_PERC, KC_LCBR, KC_RCBR, KC_PLUS,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
         KC_CIRC , KC_AMPR, KC_ASTR, KC_LBRC, KC_RBRC, KC_UNDS,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
         KC_NO   , KC_DQUO, KC_LABK, KC_RABK, KC_QUES, KC_COLN,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
-                                             KC_NO   , KC_TRNS, KC_SPC,          KC_SPC  , L_BASE , QK_LLCK
+                                             KC_NO  , KC_TRNS, KC_SPC,          KC_SPC  , L_BASE , QK_LLCK
     ),
     [_GAMING] = LAYOUT(
         KC_GRV  , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                            KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,
         KC_TAB  , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                            KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSLS,
         KC_LCTL , KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,                            KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
         KC_LSFT , KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                            KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSFT,
-                                            KC_LGUI , KC_ESC , KC_SPC ,          KC_SPC , L_BASE , QK_LLCK
+                                            KC_LGUI , KC_CAPS, KC_ENT ,          KC_SPC , L_BASE , QK_LLCK
     ),
     [_QUERTY] = LAYOUT(
         KC_GRV  , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                            KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,
         KC_TAB  , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                            KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSLS,
         KC_LCTL , GUI_A_Q, ALT_S_Q, CTL_D_Q, SFT_F_Q, KC_G   ,                            KC_H   , SFT_J_Q, CTL_K_Q, ALT_L_Q, GI_SN_Q, KC_QUOT,
         KC_LSFT , KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                            KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSFT,
-                                            KC_LGUI , KC_ESC , KC_SPC ,          KC_SPC , L_BASE , QK_LLCK
+                                            KC_LGUI , KC_CAPS, KC_ENT ,          KC_SPC , L_BASE , QK_LLCK
     ),
     [_UTIL] = LAYOUT(
         KC_NO   , QK_RBT , QK_BOOT, KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,

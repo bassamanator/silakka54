@@ -7,8 +7,4 @@
 #define VIAL_UNLOCK_COMBO_ROWS { 0, 0 }
 #define VIAL_UNLOCK_COMBO_COLS { 0, 1 }
 
-#define QUICK_TAP_TERM 50 // Default is TAPPING_TERM
-
-#define PERMISSIVE_HOLD true
-
-#define NKRO_DEFAULT_ON true
+#define QUICK_TAP_TERM 50

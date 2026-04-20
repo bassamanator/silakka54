@@ -1,7 +1,7 @@
 {
 	"cSpell.words": ["cephalus", "Corne", "hotswap", "REVIUNG", "silakka", "Squalius"],
 	"editor.formatOnSave": false,
-	"editor.rulers": [52,98],
+	"editor.rulers": [16, 25, 34, 43, 52, 61, 70, 88, 97, 106, 115, 124, 133, 142],
 	// "markdownlint.run":
 	"[markdown]": {
 		"editor.formatOnSave": false

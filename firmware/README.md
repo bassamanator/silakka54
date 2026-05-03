@@ -41,3 +41,10 @@ Enter the bootloader in 2 ways:
 
 * **Physical boot button**: Hold BOOT button down and connect MCU to the PC
 * **Keycode in layout**: Press the key mapped to `QK_BOOT` if it is available
+
+# Vial Compilation Steps
+
+```shell
+qmk env
+qmk compile -c -kb silakka54 -km vial_enthium -j 0
+```

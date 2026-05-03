@@ -48,10 +48,10 @@ enum layers {
 #define LT6_F_E LT(_QUERTY, KC_F)
 #define LT7_V_E LT(_UTIL, KC_V)
 #define L_BASE DF(0)
-// #define FIND LCTL(KC_F)
+
 #define FIND C(KC_F)
-#define TRM_CP LCTL(LSFT(KC_C))
-#define TRM_PST LCTL(LSFT(KC_V))
+#define TRM_CP LCTL(LSFT(KC_C)) // terminal copy
+#define TRM_PST LCTL(LSFT(KC_V)) // termilal paste
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -247,12 +247,11 @@ bool led_update_user(led_t led_state) {
 
 // Enable/disable layers based on layer state
 layer_state_t layer_state_set_user(layer_state_t state) {
-    // When caps lock is active we keep the red indicator; otherwise update
     if (caps_active) {
-        // nothing to do for layer colors while caps is active
+        // do nothing while caps is active
         return state;
     }
-    // Apply color for the current highest layer
+
     apply_layer_color(get_highest_layer(state));
     return state;
 }

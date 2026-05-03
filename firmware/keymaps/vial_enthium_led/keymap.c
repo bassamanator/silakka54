@@ -193,8 +193,9 @@ void keyboard_post_init_user(void) {
     apply_layer_color(get_highest_layer(layer_state));
 }
 
-// Track caps lock state locally so layer updates can respect it
+// Track caps lock and caps word states
 static bool caps_active = false;
+static bool caps_word_active = false;
 
 static void set_layer0_led_off(void) {
     rgblight_setrgb_at(0, 0, 0, 0);
@@ -232,6 +233,16 @@ static void apply_layer_color(uint8_t layer) {
     }
 }
 
+// Called automatically when Caps Word state changes
+void caps_word_set_user(bool active) {
+    caps_word_active = active;
+    if (caps_word_active) {
+        rgblight_setrgb_at(255, 0, 0, 0); // red for caps lock/word
+    } else {
+        apply_layer_color(get_highest_layer(layer_state));
+    }
+}
+
 // Enable/disable caps-lock indicator
 bool led_update_user(led_t led_state) {
     caps_active = led_state.caps_lock;
@@ -245,13 +256,12 @@ bool led_update_user(led_t led_state) {
     return true;
 }
 
-// Enable/disable layers based on layer state
+// Update LED when layers change (unless overridden by caps states)
 layer_state_t layer_state_set_user(layer_state_t state) {
-    if (caps_active) {
-        // do nothing while caps is active
+    if (caps_active || caps_word_active) {
+        // Do nothing – red already shown
         return state;
     }
-
     apply_layer_color(get_highest_layer(state));
     return state;
 }

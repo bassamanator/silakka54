@@ -72,132 +72,104 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
                        'L', 'L', 'L',  'R', 'R', 'R'
     );
 
-// Define lighting layers for the internal LED
-const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, HSV_RED}    // Light the single LED (LED 0) red when caps lock is active
+
+enum rgb_layers {
+    RGB_LAYER_0,
+    RGB_LAYER_1,
+    RGB_LAYER_2,
+    RGB_LAYER_3,
+    RGB_LAYER_4,
+    RGB_LAYER_5,
+    RGB_LAYER_6,
+    RGB_LAYER_7,
+    RGB_LAYER_CAPS
+};
+
+// Define lighting layers for the RP2040 LED
+const rgblight_segment_t PROGMEM rgb_l0[] =
+    RGBLIGHT_LAYER_SEGMENTS({0, 1, HSV_OFF});
+
+const rgblight_segment_t PROGMEM rgb_l1[] =
+    RGBLIGHT_LAYER_SEGMENTS({0, 1, HSV_BLUE});
+
+const rgblight_segment_t PROGMEM rgb_l2[] =
+    RGBLIGHT_LAYER_SEGMENTS({0, 1, HSV_GREEN});
+
+const rgblight_segment_t PROGMEM rgb_l3[] =
+    RGBLIGHT_LAYER_SEGMENTS({0, 1, HSV_PURPLE});
+
+const rgblight_segment_t PROGMEM rgb_l4[] =
+    RGBLIGHT_LAYER_SEGMENTS({0, 1, HSV_YELLOW});
+
+const rgblight_segment_t PROGMEM rgb_l5[] =
+    RGBLIGHT_LAYER_SEGMENTS({0, 1, HSV_CYAN});
+
+const rgblight_segment_t PROGMEM rgb_l6[] =
+    RGBLIGHT_LAYER_SEGMENTS({0, 1, HSV_PINK});
+
+const rgblight_segment_t PROGMEM rgb_l7[] =
+    RGBLIGHT_LAYER_SEGMENTS({0, 1, HSV_WHITE});
+
+const rgblight_segment_t PROGMEM rgb_caps[] =
+    RGBLIGHT_LAYER_SEGMENTS({0, 1, HSV_RED});    
+
+// The capslock layer has the highest priority
+const rgblight_segment_t *const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+    rgb_l0,
+    rgb_l1,
+    rgb_l2,
+    rgb_l3,
+    rgb_l4,
+    rgb_l5,
+    rgb_l6,
+    rgb_l7,
+    rgb_caps
 );
 
-const rgblight_segment_t PROGMEM my_layer1_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, HSV_BLUE}   // Light the single LED (LED 0) blue when layer 1 is active
-);
-
-const rgblight_segment_t PROGMEM my_layer2_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, HSV_GREEN}  // Light the single LED (LED 0) green when layer 2 is active
-);
-
-const rgblight_segment_t PROGMEM my_layer3_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, HSV_PURPLE} // Light the single LED (LED 0) purple when layer 3 is active
-);
-
-const rgblight_segment_t PROGMEM my_layer4_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, HSV_ORANGE} // Light the single LED (LED 0) orange when layer 4 is active
-);
-
-const rgblight_segment_t PROGMEM my_layer5_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, HSV_CYAN}   // Light the single LED (LED 0) cyan when layer 5 is active
-);
-
-const rgblight_segment_t PROGMEM my_layer6_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, HSV_YELLOW} // Light the single LED (LED 0) yellow when layer 6 is active
-);
-
-const rgblight_segment_t PROGMEM my_layer7_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, HSV_MAGENTA} // Light the single LED (LED 0) magenta when layer 7 is active
-);
-
-// Layer priority: caps lock > layer 7 > layer 6 > layer 5 > layer 4 > layer 3 > layer 2 > layer 1
-const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
-    my_layer1_layer,    // Layer 1: Layer 1 indicator (priority 1)
-    my_layer2_layer,    // Layer 2: Layer 2 indicator (priority 2)
-    my_layer3_layer,    // Layer 3: Layer 3 indicator (priority 3)
-    my_layer4_layer,    // Layer 4: Layer 4 indicator (priority 4)
-    my_layer5_layer,    // Layer 5: Layer 5 indicator (priority 5)
-    my_layer6_layer,    // Layer 6: Layer 6 indicator (priority 6)
-    my_layer7_layer,    // Layer 7: Layer 7 indicator (priority 7)
-    my_capslock_layer   // Caps lock indicator (highest priority)
-);
-
-// Forward declarations
-static void apply_layer_color(uint8_t layer);
-
+// QMK callback function that runs at the end of the keyboard initialization process
 void keyboard_post_init_user(void) {
-    // Enable the LED layers
+    rgblight_enable_noeeprom();
     rgblight_layers = my_rgb_layers;
-    // Restore layer states from EEPROM
-    rgblight_reload_from_eeprom();
-    // Ensure LED reflects the current highest layer on startup
-    apply_layer_color(get_highest_layer(layer_state));
 }
 
-// Track caps lock and caps word states
-static bool caps_active = false;
-static bool caps_word_active = false;
+// Global vars
+static uint8_t current_layer = 0;
+static bool caps_lock = false;
+static bool caps_word = false;
 
-static void set_layer0_led_off(void) {
-    rgblight_setrgb_at(0, 0, 0, 0);
-}
+static void rgb_render_state(void) {
+    bool caps = caps_lock || caps_word;
 
-static void apply_layer_color(uint8_t layer) {
-    switch (layer) {
-        case 0: // base
-            set_layer0_led_off();
-            break;
-        case 1: // blue
-            rgblight_setrgb_at(0, 0, 255, 0);
-            break;
-        case 2: // green
-            rgblight_setrgb_at(0, 255, 0, 0);
-            break;
-        case 3: // purple
-            rgblight_setrgb_at(128, 0, 128, 0);
-            break;
-        case 4: // orange
-            rgblight_setrgb_at(255, 165, 0, 0);
-            break;
-        case 5: // cyan
-            rgblight_setrgb_at(0, 255, 255, 0);
-            break;
-        case 6: // yellow
-            rgblight_setrgb_at(255, 255, 0, 0);
-            break;
-        case 7: // magenta
-            rgblight_setrgb_at(255, 0, 255, 0);
-            break;
-        default:
-            set_layer0_led_off();
-            break;
-    }
+    // Base layers
+    rgblight_set_layer_state(RGB_LAYER_0, current_layer == 0 && !caps);
+    rgblight_set_layer_state(RGB_LAYER_1, current_layer == 1 && !caps);
+    rgblight_set_layer_state(RGB_LAYER_2, current_layer == 2 && !caps);
+    rgblight_set_layer_state(RGB_LAYER_3, current_layer == 3 && !caps);
+    rgblight_set_layer_state(RGB_LAYER_4, current_layer == 4 && !caps);
+    rgblight_set_layer_state(RGB_LAYER_5, current_layer == 5 && !caps);
+    rgblight_set_layer_state(RGB_LAYER_6, current_layer == 6 && !caps);
+    rgblight_set_layer_state(RGB_LAYER_7, current_layer == 7 && !caps);
+
+    // Caps overrides everything
+    rgblight_set_layer_state(RGB_LAYER_CAPS, caps);
 }
 
 // Called automatically when Caps Word state changes
 void caps_word_set_user(bool active) {
-    caps_word_active = active;
-    if (caps_word_active) {
-        rgblight_setrgb_at(255, 0, 0, 0); // red for caps lock/word
-    } else {
-        apply_layer_color(get_highest_layer(layer_state));
-    }
+    caps_word = active;
+    rgb_render_state();
 }
 
-// Enable/disable caps-lock indicator
+// Called when any LED state changes (caps lock, num lock, scroll lock)
 bool led_update_user(led_t led_state) {
-    caps_active = led_state.caps_lock;
-    if (caps_active) {
-        // Force red regardless of active layer
-        rgblight_setrgb_at(255, 0, 0, 0);
-    } else {
-        // Restore color for current layer
-        apply_layer_color(get_highest_layer(layer_state));
-    }
+    caps_lock = led_state.caps_lock;
+    rgb_render_state();
     return true;
 }
 
 // Update LED when layers change (unless overridden by caps states)
 layer_state_t layer_state_set_user(layer_state_t state) {
-    if (caps_active || caps_word_active) {
-        // Do nothing – red already shown
-        return state;
-    }
-    apply_layer_color(get_highest_layer(state));
+    current_layer = get_highest_layer(state);
+    rgb_render_state();
     return state;
 }

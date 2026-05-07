@@ -48,6 +48,9 @@
         "pid": "0x1212",
         "vid": "0xFEED"
     },
+    "rgblight": {
+        "split": true
+    },
     "layouts": {
         "LAYOUT": {
             "layout": [

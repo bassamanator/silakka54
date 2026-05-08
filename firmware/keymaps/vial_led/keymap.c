@@ -72,7 +72,6 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
                        'L', 'L', 'L',  'R', 'R', 'R'
     );
 
-
 enum rgb_layers {
     RGB_LAYER_0,
     RGB_LAYER_1,

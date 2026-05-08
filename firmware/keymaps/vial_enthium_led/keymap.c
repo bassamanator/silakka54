@@ -199,7 +199,6 @@ const rgblight_segment_t *const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
 void keyboard_post_init_user(void) {
     rgblight_enable_noeeprom();
     rgblight_layers = my_rgb_layers;
-    rgblight_reload_from_eeprom();
 }
 
 // Global vars

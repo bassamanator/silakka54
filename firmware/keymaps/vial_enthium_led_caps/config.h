@@ -7,8 +7,6 @@
 #define VIAL_UNLOCK_COMBO_ROWS { 0, 0 }
 #define VIAL_UNLOCK_COMBO_COLS { 0, 1 }
 
-#define QUICK_TAP_TERM 50
-
 // RP2040 Zero internal WS2812 LED Configuration
 #define RGBLIGHT_LED_COUNT 1
 #define WS2812_DI_PIN GP16

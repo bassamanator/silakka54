@@ -29,12 +29,12 @@
 #define SPLIT_WATCHDOG_ENABLE
 #define SPLIT_WATCHDOG_TIMEOUT 3000
 
-// NOTE Only adjust here!
-// Comment out the following line when compiling `.uf2` for the left side
-#define MASTER_RIGHT
-
 #define MOUSEKEY_MOVE_DELTA 4
 #define MOUSEKEY_MAX_SPEED 7
 #define MOUSEKEY_WHEEL_MAX_SPEED 4
 
-#define QUICK_TAP_TERM 50
+#define QUICK_TAP_TERM 150
+
+// NOTE Only adjust here!
+// Comment out the following line when compiling `.uf2` for the left side
+#define MASTER_RIGHT

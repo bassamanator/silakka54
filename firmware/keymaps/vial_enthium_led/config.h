@@ -13,5 +13,4 @@
 #define RGBLIGHT_LAYERS
 #define RGBLIGHT_SPLIT
 
-// NOTE disabled for now, because added to keyboard.json
-// #define NKRO_DEFAULT_ON true
+#define NKRO_DEFAULT_ON true

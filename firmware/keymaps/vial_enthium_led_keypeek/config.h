@@ -12,3 +12,5 @@
 #define WS2812_DI_PIN GP16
 #define RGBLIGHT_LAYERS
 #define RGBLIGHT_SPLIT
+
+#define NKRO_DEFAULT_ON true

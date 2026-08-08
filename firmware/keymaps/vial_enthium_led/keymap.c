@@ -47,7 +47,7 @@ enum layers {
 #define LT3_D_E LT(_FUN, KC_D)
 #define LT4_P_E LT(_SYM, KC_P)
 #define LT5_Z_E LT(_GAMING, KC_Z)
-// #define LT6_F_E LT(_QUERTY, KC_F)
+#define LT6_F_E LT(_BLANK_TRNS, KC_F)
 #define LT7_V_E LT(_UTIL, KC_V)
 #define L_BASE DF(0)
 
@@ -57,7 +57,7 @@ enum layers {
 #define FIND C(KC_F)
 #define SELALL C(KC_A)
 #define TRM_CP LCTL(LSFT(KC_C)) // terminal copy
-#define TRM_PST LCTL(LSFT(KC_V)) // termilal paste
+#define TRM_PST LCTL(LSFT(KC_V)) // terminal paste
 #define SAVE C(KC_S)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {

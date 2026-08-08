@@ -162,7 +162,7 @@ const rgblight_segment_t PROGMEM rgb_l1[] =
     RGBLIGHT_LAYER_SEGMENTS({0, 1, HSV_BLUE});
 
 const rgblight_segment_t PROGMEM rgb_l2[] =
-    RGBLIGHT_LAYER_SEGMENTS({0, 1, HSV_GREEN});
+    RGBLIGHT_LAYER_SEGMENTS({0, 1, HSV_PINK});
 
 const rgblight_segment_t PROGMEM rgb_l3[] =
     RGBLIGHT_LAYER_SEGMENTS({0, 1, HSV_PURPLE});
@@ -174,7 +174,7 @@ const rgblight_segment_t PROGMEM rgb_l5[] =
     RGBLIGHT_LAYER_SEGMENTS({0, 1, HSV_CYAN});
 
 const rgblight_segment_t PROGMEM rgb_l6[] =
-    RGBLIGHT_LAYER_SEGMENTS({0, 1, HSV_PINK});
+    RGBLIGHT_LAYER_SEGMENTS({0, 1, HSV_GREEN});
 
 const rgblight_segment_t PROGMEM rgb_l7[] =
     RGBLIGHT_LAYER_SEGMENTS({0, 1, HSV_WHITE});

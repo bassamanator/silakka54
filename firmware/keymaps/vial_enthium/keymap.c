@@ -39,7 +39,6 @@ enum layers {
     _UTIL = 7,
 };
 
-// #define LT1_O_Q LT(_NAV, KC_O)
 #define LT1_Y_E LT(_NAV, KC_Y)
 #define LT2_O_E LT(_MOUSE, KC_O)
 #define LT3_D_E LT(_FUN, KC_D)
@@ -48,13 +47,17 @@ enum layers {
 #define LT6_F_E LT(_QUERTY, KC_F)
 #define LT7_V_E LT(_UTIL, KC_V)
 #define L_BASE DF(0)
-// #define FIND LCTL(KC_F)
+
+#define CUT C(KC_X)
+#define COPY C(KC_C)
+#define PASTE C(KC_V)
 #define FIND C(KC_F)
-#define TRM_CP LCTL(LSFT(KC_C))
-#define TRM_PST LCTL(LSFT(KC_V))
+#define SELALL C(KC_A)
+#define TRM_CP LCTL(LSFT(KC_C)) // terminal copy
+#define TRM_PST LCTL(LSFT(KC_V)) // termilal paste
+#define SAVE C(KC_S)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
     [_ENTHIUM] = LAYOUT(
         KC_GRV  , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                            KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,
         KC_TAB  , KC_Q   , LT1_Y_E, LT2_O_E, KC_U   , KC_EQL ,                            KC_X   , KC_L   , LT3_D_E, LT4_P_E, LT5_Z_E, KC_BSLS,
@@ -64,15 +67,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_NAV] = LAYOUT(
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_BSPC,
-        KC_TRNS , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_PGUP, KC_HOME, KC_UP  , KC_END , KC_ESC , KC_NO  ,
+        SAVE    , CUT    , COPY   , KC_NO  , PASTE  , KC_NO  ,                            KC_PGUP, KC_HOME, KC_UP  , KC_END , KC_ESC , KC_NO  ,
         KC_NO   , KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO  ,                            KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_DEL , KC_INS ,
-        KC_NO   , KC_NO  , KC_CUT , KC_COPY, KC_PSTE, FIND   ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
+        KC_NO   , SELALL , KC_NO  , KC_NO  , KC_NO  , FIND   ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
                                             KC_TRNS , KC_TRNS, KC_TRNS,         KC_PSCR , L_BASE , QK_LLCK
     ),
     [_MOUSE] = LAYOUT(
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
-        KC_NO   , KC_NO  , MS_BTN2, KC_NO  , MS_BTN1, KC_NO  ,                            MS_WHLU, MS_BTN1, MS_UP  , MS_BTN2, MS_WHLL, KC_NO  ,
-        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            MS_WHLD, MS_LEFT, MS_DOWN, MS_RGHT, MS_WHLR, KC_NO  ,
+        KC_NO   , KC_NO  , MS_BTN2, KC_NO  , MS_BTN1, KC_NO  ,                            MS_WHLL, MS_BTN1, MS_UP  , MS_BTN2, MS_WHLU, KC_NO  ,
+        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            MS_WHLR, MS_LEFT, MS_DOWN, MS_RGHT, MS_WHLD, KC_NO  ,
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
                                             KC_TRNS , KC_TRNS, KC_TRNS,         KC_PSCR , L_BASE , QK_LLCK
     ),
@@ -106,9 +109,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_UTIL] = LAYOUT(
         KC_NO   , QK_RBT , QK_BOOT, KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
-        KC_NO   , KC_NO  , KC_NO  , TRM_CP , TRM_PST, KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
+        SAVE    , KC_NO  , KC_NO  , TRM_CP , TRM_PST, KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
         KC_R    , KC_E   , KC_I   , KC_S   , KC_U   , KC_B   ,                            KC_NO  , KC_NO  , KC_NO  , KC_RALT, KC_NO  , KC_NO  ,
-        KC_NO   , KC_NO  , KC_CUT , KC_COPY, KC_PSTE, FIND   ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
+        KC_NO   , SELALL , CUT    , COPY   , PASTE  , FIND   ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
                                             KC_TRNS , KC_TRNS, KC_TRNS,         KC_PSCR , L_BASE , QK_LLCK
     ),
     // [_BLANK_NC] = LAYOUT(

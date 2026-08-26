@@ -11,3 +11,6 @@ PCB is designed for MX style key switches. Current top plate only supports MX st
 
 PCB design uses footprints from [ScottoKeebs](https://github.com/joe-scotto/scottokeebs/tree/main/Extras/ScottoKicad "ScottoKeebs") and [kbd library.](https://github.com/foostan/kbd "kbd library.")
 
+# My keymap
+
+![my keymap](.github/images/keymap.svg)

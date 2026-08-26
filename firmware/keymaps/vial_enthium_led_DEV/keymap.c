@@ -43,13 +43,10 @@ enum layers {
 };
 
 #define LT1_Y_E LT(_NAV, KC_Y)
-#define LT2_O_E LT(_MOUSE, KC_O)
-#define LT3_D_E LT(_FUN, KC_D)
-#define LT4_P_E LT(_SYM, KC_P)
+#define LT3_P_E LT(_FUN, KC_P)
 #define LT5_Z_E LT(_GAMING, KC_Z)
 #define LT6_F_E LT(_QUERTY, KC_F)
 #define LT7_V_E LT(_UTIL, KC_V)
-#define L_BASE DF(0)
 
 #define CUT C(KC_X)
 #define COPY C(KC_C)
@@ -63,59 +60,59 @@ enum layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_ENTHIUM] = LAYOUT(
         KC_GRV  , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                            KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,
-        KC_TAB  , KC_Q   , LT1_Y_E, LT2_O_E, KC_U   , KC_EQL ,                            KC_X   , KC_L   , LT3_D_E, LT4_P_E, LT5_Z_E, KC_BSLS,
+        KC_TAB  , KC_Q   , LT1_Y_E, TD(0)  , TD(1)  , KC_EQL ,                            KC_X   , KC_L   , KC_D   , LT3_P_E, LT5_Z_E, KC_BSLS,
         KC_B    , GUI_C_E, ALT_I_E, CTL_A_E, SFT_E_E, KC_MINS,                            KC_K   , SFT_H_E, CTL_T_E, ALT_N_E, GUI_S_E, KC_W   ,
-        KC_DEL  , KC_QUOT, KC_COMM, KC_DOT , KC_SCLN, KC_SLSH,                            KC_J   , KC_M   , KC_G   , LT6_F_E, LT7_V_E, KC_ENT ,
-                                            KC_ENT  , KC_SPC , KC_CAPS,          KC_NO  , KC_R   , KC_NO
+        KC_DEL  , KC_QUOT, KC_COMM, KC_DOT , KC_SCLN, TD(2)  ,                            KC_J   , KC_M   , KC_G   , LT6_F_E, LT7_V_E, KC_ENT ,
+                                            KC_ENT  , KC_SPC , KC_CAPS,          MO(_SYM), KC_R   , KC_F5
     ),
     [_NAV] = LAYOUT(
-        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_BSPC,
-        SAVE    , CUT    , COPY   , KC_NO  , PASTE  , KC_NO  ,                            KC_PGUP, KC_HOME, KC_UP  , KC_END , KC_ESC , KC_NO  ,
+        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            QK_CAPS_WORD_TOGGLE, KC_VOLD, KC_VOLU, KC_NO  , KC_NO  , KC_BSPC,
+        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_PGUP, KC_HOME, KC_UP  , KC_END , KC_ESC , KC_NO  ,
         KC_NO   , KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO  ,                            KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_DEL , KC_INS ,
-        KC_NO   , SELALL , KC_NO  , KC_NO  , KC_NO  , FIND   ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
-                                            KC_TRNS , KC_TRNS, KC_TRNS,         KC_PSCR , L_BASE , QK_LLCK
+        KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_MRWD, KC_MPLY, KC_MFFD, KC_MUTE, KC_TRNS,
+                                            KC_TRNS , KC_TRNS, KC_TRNS,         KC_PSCR , TO(0)  , QK_LLCK
     ),
     [_MOUSE] = LAYOUT(
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
         KC_NO   , KC_NO  , MS_BTN2, KC_NO  , MS_BTN1, KC_NO  ,                            MS_WHLL, MS_BTN1, MS_UP  , MS_BTN2, MS_WHLU, KC_NO  ,
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            MS_WHLR, MS_LEFT, MS_DOWN, MS_RGHT, MS_WHLD, KC_NO  ,
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
-                                            KC_TRNS , KC_TRNS, KC_TRNS,         KC_PSCR , L_BASE , QK_LLCK
+                                            KC_TRNS , KC_TRNS, KC_TRNS,         KC_PSCR , TO(0)  , QK_LLCK
     ),
     [_FUN] = LAYOUT(
         KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
         KC_NO   , KC_F9  , KC_F10 , KC_F11 , KC_F12 , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
-        KC_NO   , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
+        KC_NO   , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_PSCR,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
         KC_NO   , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
-                                            KC_TRNS , KC_TRNS, KC_TRNS,         KC_PSCR , L_BASE , QK_LLCK
+                                            KC_TRNS , KC_TRNS, KC_TRNS,         KC_PSCR , TO(0)  , QK_LLCK
     ),
     [_SYM] = LAYOUT(
-        KC_TILD , KC_EXLM, KC_AT  , KC_LPRN, KC_RPRN, KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
-        KC_HASH , KC_DLR , KC_PERC, KC_LCBR, KC_RCBR, KC_PLUS,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
-        KC_CIRC , KC_AMPR, KC_ASTR, KC_LBRC, KC_RBRC, KC_UNDS,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
-        KC_NO   , KC_DQUO, KC_LABK, KC_RABK, KC_QUES, KC_COLN,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
-                                            KC_TRNS , KC_TRNS, KC_TRNS,         KC_PSCR , L_BASE , QK_LLCK
+        KC_GRV  , S(KC_GRV), S(KC_9), S(KC_0), KC_SCLN, S(KC_5),                     KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
+        S(KC_1) , KC_LBRC , S(KC_LBRC), S(KC_RBRC), KC_RBRC, S(KC_SLSH),             KC_NO  , KC_QUOT, S(KC_QUOT), KC_NO , KC_NO , KC_NO  ,
+        S(KC_3) , S(KC_6) , KC_MINS, S(KC_EQL), S(KC_4), S(KC_8),                     KC_NO  , KC_SCLN, S(KC_SCLN), KC_NO , KC_NO , KC_NO  ,
+        S(KC_GRV), S(KC_COMM), S(KC_7), S(KC_BSLS), S(KC_DOT), KC_SLSH,               KC_BSLS, KC_COMM, S(KC_DOT), KC_NO , KC_NO , KC_NO  ,
+                                            KC_BSLS , KC_TRNS, S(KC_2),     KC_NO  , KC_NO  , QK_LLCK
     ),
     [_GAMING] = LAYOUT(
         KC_GRV  , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                            KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,
         KC_TAB  , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                            KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSLS,
         KC_LCTL , KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,                            KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
         KC_LSFT , KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                            KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSFT,
-                                            KC_LGUI , KC_CAPS, KC_ENT ,          KC_SPC , L_BASE , QK_LLCK
+                                            KC_ENT  , KC_SPC , KC_ESC ,          KC_SPC , TO(0)  , QK_LLCK
     ),
     [_QUERTY] = LAYOUT(
         KC_GRV  , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                            KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,
         KC_TAB  , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                            KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSLS,
         KC_LCTL , GUI_A_Q, ALT_S_Q, CTL_D_Q, SFT_F_Q, KC_G   ,                            KC_H   , SFT_J_Q, CTL_K_Q, ALT_L_Q, GI_SN_Q, KC_QUOT,
         KC_LSFT , KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,                            KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSFT,
-                                            KC_LGUI , KC_CAPS, KC_ENT ,          KC_SPC , L_BASE , QK_LLCK
+                                            KC_NO   , KC_SPC , KC_CAPS,          KC_SPC , TO(0)  , QK_LLCK
     ),
     [_UTIL] = LAYOUT(
-        KC_NO   , QK_RBT , QK_BOOT, KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
-        SAVE    , KC_NO  , KC_NO  , TRM_CP , TRM_PST, KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
+        LSA(KC_F2), QK_RBT, QK_BOOT, KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
+        SAVE    , SELALL , KC_NO  , TRM_CP , TRM_PST, KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
         KC_R    , KC_E   , KC_I   , KC_S   , KC_U   , KC_B   ,                            KC_NO  , KC_NO  , KC_NO  , KC_RALT, KC_NO  , KC_NO  ,
         KC_NO   , SELALL , CUT    , COPY   , PASTE  , FIND   ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
-                                            KC_TRNS , KC_TRNS, KC_TRNS,         KC_PSCR , L_BASE , QK_LLCK
+                                            KC_TRNS , KC_TRNS, KC_TRNS,         KC_PSCR , TO(0)  , QK_LLCK
     ),
     // [_BLANK_NC] = LAYOUT(
     //     KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
@@ -129,9 +126,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //     KC_TRNS , KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     //     KC_TRNS , KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     //     KC_TRNS , KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    //                                         KC_TRNS , KC_TRNS, KC_TRNS,           KC_TRNS, KC_TRNS, KC_TRNS
+    //                                         KC_TRNS , KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS
     // )
 };
+
+// Tap dances: TD(0) O / TD(1) U / TD(2) / are NOT defined here. This is Vial firmware:
+// `tap_dance_actions[]` lives in quantum/vial.c and is populated from EEPROM, so the
+// TD() behaviors (tap/hold/double + per-dance tap terms 150/150/155) come from the
+// Vial GUI config exported in 7-aug.vil and applied via Vial (import the layout).
 
 const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
     LAYOUT(
@@ -241,4 +243,47 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     current_layer = get_highest_layer(state);
     rgb_render_state();
     return state;
+}
+
+// ---------------------------------------------------------------------------
+// Seed Vial tap dances & combos into EEPROM on first boot.
+//
+// Vial stores tap dances and combos in EEPROM, not in firmware, and flashing a
+// fresh UF2 wipes the RP2040's emulated EEPROM. This hook runs exactly when
+// EEPROM is uninitialized (i.e. after a flash) and writes the same entries as
+// 7-aug.vil, so they work with no Vial GUI import. It never clobbers config
+// written later by the GUI, because it only fires while EEPROM is uninit.
+// ---------------------------------------------------------------------------
+void eeconfig_init_user(void) {
+#if defined(VIAL_TAP_DANCE_ENABLE) || defined(VIAL_COMBO_ENABLE)
+    // Same entries as the `tap_dance` array in 7-aug.vil (first 3 slots).
+#ifdef VIAL_TAP_DANCE_ENABLE
+    vial_tap_dance_entry_t td;
+    td = (vial_tap_dance_entry_t){ KC_O, MO(_MOUSE), LCTL(LSFT(KC_C)), KC_NO, 150 };   // O tap / MO(2) hold / C-S-C double
+    dynamic_keymap_set_tap_dance(0, &td);
+    td = (vial_tap_dance_entry_t){ KC_U, KC_NO, LCTL(LSFT(KC_V)), KC_NO, 150 };       // U tap / C-S-V double
+    dynamic_keymap_set_tap_dance(1, &td);
+    td = (vial_tap_dance_entry_t){ KC_SLASH, KC_NO, LCTL(KC_F), KC_NO, 155 };         // / tap / C-F double
+    dynamic_keymap_set_tap_dance(2, &td);
+#endif
+
+    // Same entries as the `combo` array in 7-aug.vil (first 4 slots).
+#ifdef VIAL_COMBO_ENABLE
+    vial_combo_entry_t cb;
+    cb = (vial_combo_entry_t){ { KC_COMMA, KC_DOT, KC_NO, KC_NO }, LCTL(KC_C) };      // , + .  -> copy
+    dynamic_keymap_set_combo(0, &cb);
+    cb = (vial_combo_entry_t){ { KC_DOT, KC_SCLN, KC_NO, KC_NO }, LCTL(KC_V) };     // . + ;  -> paste
+    dynamic_keymap_set_combo(1, &cb);
+    cb = (vial_combo_entry_t){ { KC_QUOTE, KC_SCLN, KC_NO, KC_NO }, LCTL(KC_X) };   // ' + ;  -> cut
+    dynamic_keymap_set_combo(2, &cb);
+    cb = (vial_combo_entry_t){ { KC_TAB, KC_Q, KC_NO, KC_NO }, LCTL(LSFT(KC_V)) };    // Tab + Q -> C-S-V
+    dynamic_keymap_set_combo(3, &cb);
+#endif
+
+    // Reload Vial's in-RAM tables (esp. combos, which are cached at boot) so
+    // the freshly seeded entries take effect without a GUI import.
+#ifdef VIAL_ENABLE
+    vial_init();
+#endif
+#endif
 }

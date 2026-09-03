@@ -6,10 +6,6 @@
     "build": {
         "lto": true
     },
-    "caps_word": {
-        "enabled": true,
-        "double_tap_shift_turns_on":true
-    },
     "diode_direction": "COL2ROW",
     "features": {
         "bootmagic": true,
@@ -36,13 +32,15 @@
     },
     "processor": "RP2040",
     "tapping": {
-        "chordal_hold":true,
-        "hold_on_other_key_press":true,
-        "hold_on_other_key_press_per_key":true,
-        "permissive_hold": true,
-        "permissive_hold_per_key":true,
+        "chordal_hold": true,
+        "hold_on_other_key_press": false,
+        "hold_on_other_key_press_per_key": false,
+        "permissive_hold": false,
+        "permissive_hold_per_key": false,
+        "retro": false,
+        "retro_per_key": false,
         "term": 180,
-        "term_per_key":true
+        "term_per_key": true
     },
     "url": "https://github.com/Squalius-cephalus/silakka54",
     "usb": {

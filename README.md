@@ -7,10 +7,25 @@ PCB is designed for MX style key switches. Current top plate only supports MX st
 
 **For more information visit https://github.com/Squalius-cephalus/silakka54/wiki**
 
-![](https://raw.githubusercontent.com/Squalius-cephalus/silakka54/main/silakka54.png)
+<!-- ![](https://raw.githubusercontent.com/Squalius-cephalus/silakka54/main/silakka54.png) -->
 
-PCB design uses footprints from [ScottoKeebs](https://github.com/joe-scotto/scottokeebs/tree/main/Extras/ScottoKicad "ScottoKeebs") and [kbd library.](https://github.com/foostan/kbd "kbd library.")
+<!-- PCB design uses footprints from [ScottoKeebs](https://github.com/joe-scotto/scottokeebs/tree/main/Extras/ScottoKicad "ScottoKeebs") and [kbd library.](https://github.com/foostan/kbd "kbd library.") -->
 
 # My keymap
 
 ![my keymap](.github/images/keymap.svg)
+
+# Symlinks
+
+```shell
+ cd firmware/keymaps
+ ls -l vial_*/rules.mk
+Permissions Size User   Group  Date Modified Name
+lrwxrwxrwx     - bassam bassam  3 Sep 14:59   vial_enthium_led_caps/rules.mk -> ../vial_enthium_led/rules.mk
+.rw-r--r--   267 bassam bassam  3 Sep 15:01   vial_enthium_led_keypeek/rules.mk
+.rw-r--r--   249 bassam bassam  3 Sep 14:10   vial_enthium_led/rules.mk
+.rw-r--r--   203 bassam bassam  7 Aug 18:32   vial_enthium/rules.mk
+lrwxrwxrwx     - bassam bassam  3 Sep 14:59   vial_led_caps/rules.mk -> ../vial_enthium_led/rules.mk
+lrwxrwxrwx     - bassam bassam  3 Sep 14:59   vial_led_oneside/rules.mk -> ../vial_enthium_led/rules.mk
+.rw-r--r--   127 bassam bassam 20 May 22:13   vial_led/rules.mk
+```

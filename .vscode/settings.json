@@ -1,5 +1,17 @@
 {
-	"cSpell.words": ["cephalus", "Corne", "hotswap", "REVIUNG", "silakka", "Squalius"],
+	"cSpell.words": [
+		"cephalus",
+		"Corne",
+		"enthium",
+		"hotswap",
+		"keymaps",
+		"keypeek",
+		"lrwxrwxrwx",
+		"oneside",
+		"REVIUNG",
+		"silakka",
+		"Squalius"
+	],
 	"editor.formatOnSave": false,
 	"editor.rulers": [16, 25, 34, 43, 52, 61, 70, 88, 97, 106, 115, 124, 133, 142],
 	// "markdownlint.run":

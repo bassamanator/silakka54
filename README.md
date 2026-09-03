@@ -28,4 +28,14 @@ lrwxrwxrwx     - bassam bassam  3 Sep 14:59   vial_enthium_led_caps/rules.mk 
 lrwxrwxrwx     - bassam bassam  3 Sep 14:59   vial_led_caps/rules.mk -> ../vial_enthium_led/rules.mk
 lrwxrwxrwx     - bassam bassam  3 Sep 14:59   vial_led_oneside/rules.mk -> ../vial_enthium_led/rules.mk
 .rw-r--r--   127 bassam bassam 20 May 22:13   vial_led/rules.mk
+
+ ls -l vial_*/config.h
+Permissions Size User   Group  Date Modified Name
+.rw-r--r--   285 bassam bassam  7 Aug 18:32   vial_enthium/config.h
+lrwxrwxrwx     - bassam bassam  3 Sep 15:37   vial_enthium_led_caps/config.h -> ../vial_enthium_led/config.h
+.rw-r--r--   438 bassam bassam  3 Sep 01:27   vial_enthium_led/config.h
+lrwxrwxrwx     - bassam bassam  3 Sep 15:37   vial_enthium_led_keypeek/config.h -> ../vial_enthium_led/config.h
+lrwxrwxrwx     - bassam bassam  3 Sep 15:37   vial_led_caps/config.h -> ../vial_enthium_led/config.h
+.rw-r--r--   407 bassam bassam 20 May 22:13   vial_led/config.h
+.rw-r--r--   410 bassam bassam  7 Aug 18:32   vial_led_oneside/config.h
 ```

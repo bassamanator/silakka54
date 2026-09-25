@@ -60,6 +60,35 @@ from pathlib import Path
 
 # Long Vial name -> short alias used in this keymap.
 KEY_ALIASES = {
+    "LGUI_T(KC_C)": "GUI_C_E",
+    "LALT_T(KC_I)": "ALT_I_E",
+    "LCTL_T(KC_A)": "CTL_A_E",
+    "LSFT_T(KC_E)": "SFT_E_E",
+    "RSFT_T(KC_H)": "SFT_H_E",
+    "RCTL_T(KC_T)": "CTL_T_E",
+    "LALT_T(KC_N)": "ALT_N_E",
+    "RGUI_T(KC_S)": "GUI_S_E",
+    "LT(_GAMING, KC_Z)": "LT1_Z_E",
+    "LT(_NAV, KC_Y)": "LT2_Y_E",
+    "LT(_MOUSE, KC_O)": "LT3_O_E",
+    "LT(_FUN, KC_P)": "LT4_P_E",
+    "LT(_FUN, KC_O)": "LT4_O_Q",
+    "LT(_BLANK_TRNS, KC_F)": "LT6_F_E",
+    "LT(_UTIL, KC_V)": "LT7_V_E",
+    "MO(_SYM)": "LM_SYM",
+    "LCTL(KC_X)": "CUT",
+    "LCTL(KC_C)": "COPY",
+    "LCTL(KC_V)": "PASTE",
+    "LCTL(KC_F)": "FIND",
+    "LCTL(KC_A)": "SELALL",
+    "LCTL(LSFT(KC_C))": "TRM_CP",
+    "LCTL(LSFT(KC_V))": "TRM_PST",
+    "LCTL(KC_S)": "SAVE",
+    "LSA(KC_F2)": "KRUN",
+    "LCA(KC_F1)": "TTY1",
+    "LCA(KC_F2)": "TTY2",
+    "LCA(KC_F3)": "TTY3",
+    "QK_CAPS_WORD_TOGGLE": "CW_TOGG",
     "KC_GRAVE": "KC_GRV",
     "KC_EQUAL": "KC_EQL",
     "KC_MINUS": "KC_MINS",
@@ -95,6 +124,7 @@ KEY_ALIASES = {
     "KC_BTN2": "MS_BTN2",
     "QK_LAYER_LOCK": "QK_LLCK",
     "QK_REBOOT": "QK_RBT",
+    "KC_COMMA": "KC_COMM",
 }
 
 # US-ANSI shifted symbols: "LSFT(KC_GRAVE)" -> "KC_TILD", etc.  Keyed by the
@@ -131,7 +161,8 @@ MOD_NAMES = {"C": "LCTL", "S": "LSFT", "A": "LALT", "G": "LGUI"}
 
 # Functions whose first argument is a layer number (used to substitute enum
 # layer names when the template keymap.c defines them).
-LAYER_FN_RE = re.compile(r"\b(MO|TT|TG|OSL|TO|DF|PDF|LT|LM)\((\d+)(?=(?:,|\)))")
+LAYER_FN_RE = re.compile(
+    r"\b(MO|TT|TG|OSL|TO|DF|PDF|LT|LM)\((\d+)(?=(?:,|\)))")
 
 # Valid characters for a keycode token (QMK "Any" entries may be hex numbers).
 KEYCODE_CHARS = re.compile(r"^[A-Za-z0-9_()|, ]+$")
@@ -158,6 +189,11 @@ def normalize_keycode(kc, layer_names):
     kc = kc.strip()
     if kc == "KC_NO":
         return kc
+    # Apply aliases before Vial modifier shorthand expansion.
+    for old, new in KEY_ALIASES.items():
+        if "(" in old:
+            kc = re.sub(r"(?<![A-Za-z0-9_])%s(?![A-Za-z0-9_])" %
+                        re.escape(old), new, kc)
     # Vial's "LT1(KC_Y)" -> QMK "LT(1, KC_Y)" (numeric layer-tap).
     kc = re.sub(r"\bLT(\d+)\s*\(", r"LT(\1, ", kc)
     kc = expand_mod_shortcuts(kc)
@@ -167,15 +203,23 @@ def normalize_keycode(kc, layer_names):
     # Shifted US-ANSI symbols.
     for inner, out in SHIFTED_SYMBOLS.items():
         kc = re.sub(r"\bLSFT\(%s\)" % re.escape(inner), out, kc)
-    # Long keycode names -> short aliases used in this keymap.
+    # Long Vial keycode names -> short aliases used in this keymap.
     for old, new in KEY_ALIASES.items():
-        kc = re.sub(r"\b%s\b" % re.escape(old), new, kc)
+        if "(" not in old:
+            kc = re.sub(r"(?<![A-Za-z0-9_])%s(?![A-Za-z0-9_])" %
+                        re.escape(old), new, kc)
     # Layer numbers -> enum layer names when the template defines them.
     if layer_names is not None:
         kc = LAYER_FN_RE.sub(
-            lambda m: "%s(%s" % (m.group(1), layer_names.get(int(m.group(2)), m.group(2))),
+            lambda m: "%s(%s" % (m.group(1), layer_names.get(
+                int(m.group(2)), m.group(2))),
             kc,
         )
+    # Replace composite expressions after layer names have been expanded.
+    for old, new in KEY_ALIASES.items():
+        if "(" in old:
+            kc = re.sub(r"(?<![A-Za-z0-9_])%s(?![A-Za-z0-9_])" %
+                        re.escape(old), new, kc)
     if not KEYCODE_CHARS.match(kc):
         raise ValueError("unexpected keycode token: %r" % kc)
     return kc
@@ -197,17 +241,20 @@ def convert_layout(vil, layout_def, layer_names):
     out_layers = []
     for li, layer in enumerate(matrix):
         if len(layer) <= max_row:
-            raise SystemExit("error: layer %d has %d rows, need %d" % (li, len(layer), max_row + 1))
+            raise SystemExit("error: layer %d has %d rows, need %d" %
+                             (li, len(layer), max_row + 1))
         args = []
         for e in layout_def:
             r, c = e["matrix"]
             if c >= len(layer[r]):
                 raise SystemExit(
-                    "error: layer %d row %d has %d cols, need %d" % (li, r, len(layer[r]), c + 1)
+                    "error: layer %d row %d has %d cols, need %d" % (
+                        li, r, len(layer[r]), c + 1)
                 )
             kc = layer[r][c]
             if kc == -1:
-                raise SystemExit("error: layer %d matrix [%d, %d] is -1 but is part of LAYOUT" % (li, r, c))
+                raise SystemExit(
+                    "error: layer %d matrix [%d, %d] is -1 but is part of LAYOUT" % (li, r, c))
             args.append(normalize_keycode(kc, layer_names))
         out_layers.append(args)
     return out_layers
@@ -250,7 +297,8 @@ def parse_layer_names(keymap_c_text):
 def format_keymaps(out_layers, layer_names, rows, source_name):
     lines = []
     lines.append("// Generated by vil2keymap.py from %s" % source_name)
-    lines.append("const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {")
+    lines.append(
+        "const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {")
     for i, args in enumerate(out_layers):
         if layer_names is not None and i in layer_names:
             lines.append("    [%s] = LAYOUT(" % layer_names[i])
@@ -258,16 +306,18 @@ def format_keymaps(out_layers, layer_names, rows, source_name):
             lines.append("    [%d] = LAYOUT(" % i)
         pos = 0
         for row_len in rows:
-            row = args[pos : pos + row_len]
+            row = args[pos: pos + row_len]
             pos += row_len
             half = row_len // 2
             left, right = row[:half], row[half:]
-            # Fixed 9-char columns, matching the rest of this keymap.
-            fmt = lambda ks: ", ".join(k.ljust(9) for k in ks)  # noqa: E731
+            # Keep each keycode in an 8-character field for readable alignment.
+            def fmt(ks): return ", ".join(k.ljust(8) for k in ks)  # noqa: E731
             if row_len >= 8:
-                lines.append("        %s,%s%s," % (fmt(left), " " * 28, fmt(right)))
+                lines.append("        %s,%s%s," %
+                             (fmt(left), " " * 28, fmt(right)))
             else:
-                lines.append("        %s%s,%s%s" % (" " * 36, fmt(left), " " * 10, fmt(right)))
+                lines.append("        %s%s,%s%s" %
+                             (" " * 36, fmt(left), " " * 10, fmt(right)))
         lines.append("    ),")
     lines.append("};")
     return "\n".join(lines)
@@ -281,11 +331,13 @@ ARRAY_RE = re.compile(
 
 def splice_template(template_text, new_array_block):
     # Drop any previous generator comment so re-running stays idempotent.
-    template_text = re.sub(r"^// Generated by vil2keymap\.py from .*$\n", "", template_text, flags=re.M)
+    template_text = re.sub(
+        r"^// Generated by vil2keymap\.py from .*$\n", "", template_text, flags=re.M)
     m = ARRAY_RE.search(template_text)
     if not m:
-        raise SystemExit("error: could not find the keymaps array in the template keymap.c")
-    return template_text[: m.start()] + new_array_block + template_text[m.end() :]
+        raise SystemExit(
+            "error: could not find the keymaps array in the template keymap.c")
+    return template_text[: m.start()] + new_array_block + template_text[m.end():]
 
 
 STANDALONE_TEMPLATE = """\
@@ -310,7 +362,8 @@ def main(argv=None):
         metavar="FILE",
         help="template keymap.c whose keymaps array is replaced (default: auto-detect under firmware/keymaps)",
     )
-    ap.add_argument("-o", "--output", metavar="FILE", help="output file (default: the template keymap.c)")
+    ap.add_argument("-o", "--output", metavar="FILE",
+                    help="output file (default: the template keymap.c)")
     ap.add_argument(
         "--keyboard-json",
         metavar="FILE",
@@ -331,7 +384,8 @@ def main(argv=None):
     except (OSError, ValueError) as e:
         raise SystemExit("error: cannot read %s: %s" % (vil_path, e))
     if "layout" not in vil:
-        raise SystemExit("error: %s has no 'layout' field; not a Vial layout export?" % vil_path)
+        raise SystemExit(
+            "error: %s has no 'layout' field; not a Vial layout export?" % vil_path)
 
     kb_path = Path(args.keyboard_json)
     try:
@@ -341,12 +395,14 @@ def main(argv=None):
     try:
         layout_def = kb["layouts"]["LAYOUT"]["layout"]
     except KeyError:
-        raise SystemExit("error: %s has no layouts.LAYOUT definition" % kb_path)
+        raise SystemExit(
+            "error: %s has no layouts.LAYOUT definition" % kb_path)
 
     rows = [int(x) for x in args.rows.split(",")]
     if sum(rows) != len(layout_def):
         raise SystemExit(
-            "error: --rows sums to %d but LAYOUT has %d keys" % (sum(rows), len(layout_def))
+            "error: --rows sums to %d but LAYOUT has %d keys" % (
+                sum(rows), len(layout_def))
         )
 
     template_path = None
@@ -354,7 +410,8 @@ def main(argv=None):
         template_path = Path(args.keymap_c)
     else:
         keymaps_dir = Path("firmware/keymaps")
-        cands = sorted(keymaps_dir.glob("*/keymap.c")) if keymaps_dir.exists() else []
+        cands = sorted(keymaps_dir.glob("*/keymap.c")
+                       ) if keymaps_dir.exists() else []
         if len(cands) == 1:
             template_path = cands[0]
         elif len(cands) > 1:
@@ -364,12 +421,15 @@ def main(argv=None):
             for cand in cands:
                 cfg = cand.with_name("config.h")
                 if uid is not None and cfg.exists():
-                    m = re.search(r"VIAL_KEYBOARD_UID\s*\{([^}]+)\}", cfg.read_text())
+                    m = re.search(
+                        r"VIAL_KEYBOARD_UID\s*\{([^}]+)\}", cfg.read_text())
                     if m:
                         try:
                             # .vil stores the 8 UID bytes little-endian as one integer.
-                            cfg_bytes = [int(b.strip().replace("0x", ""), 16) for b in m.group(1).split(",")]
-                            cfg_uid = sum(v << (8 * i) for i, v in enumerate(cfg_bytes))
+                            cfg_bytes = [int(b.strip().replace("0x", ""), 16)
+                                         for b in m.group(1).split(",")]
+                            cfg_uid = sum(v << (8 * i)
+                                          for i, v in enumerate(cfg_bytes))
                         except ValueError:
                             cfg_uid = None
                         if cfg_uid == uid:
@@ -378,16 +438,19 @@ def main(argv=None):
                 template_path = uid_matches[0]
             else:
                 raise SystemExit(
-                    "error: multiple keymaps found, use --keymap-c: " + ", ".join(str(c) for c in cands)
+                    "error: multiple keymaps found, use --keymap-c: " +
+                    ", ".join(str(c) for c in cands)
                 )
 
     template_text = None
     if template_path is not None:
         if not template_path.exists():
-            raise SystemExit("error: template keymap.c not found: %s" % template_path)
+            raise SystemExit(
+                "error: template keymap.c not found: %s" % template_path)
         template_text = template_path.read_text()
 
-    layer_names = parse_layer_names(template_text) if template_text is not None else None
+    layer_names = parse_layer_names(
+        template_text) if template_text is not None else None
     if layer_names is not None and len(layer_names) != len(vil["layout"]):
         print(
             "note: enum layers has %d entries but the .vil has %d layers; using numeric designators"

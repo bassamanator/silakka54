@@ -13,7 +13,8 @@
 		"Squalius"
 	],
 	"editor.formatOnSave": false,
-	"editor.rulers": [16, 25, 34, 43, 52, 61, 70, 88, 97, 106, 115, 124, 133, 142],
+	// "editor.rulers": [16, 25, 34, 43, 52, 61, 70, 88, 97, 106, 115, 124, 133, 142],
+	"editor.rulers": [16, 26, 36, 46, 56, 66,        76,          93,      103, 113, 123, 133, 143, 153],
 	// "markdownlint.run":
 	"[markdown]": {
 		"editor.formatOnSave": false

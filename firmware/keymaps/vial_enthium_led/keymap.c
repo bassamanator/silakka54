@@ -52,6 +52,12 @@ enum layers {
 #define TTY2 LCA(KC_F2)
 #define TTY3 LCA(KC_F3)
 
+// NOTE Enthium v14 layout https://github.com/sunaku/enthium
+//   q y o u = x l d p z
+// b c i a e - k h t n s w
+//   ' , . ; / j m g f v
+//             r
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
         KC_GRV  , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,                            KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , KC_BSPC,
@@ -109,21 +115,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO   , SELALL , CUT    , COPY   , PASTE  , FIND   ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_TRNS,
                                             KC_TRNS , KC_TRNS, KC_TRNS,         KC_NO   , KC_NO  , QK_LLCK
     ),
+};
     // [_BLANK_NC] = LAYOUT(
-    //     KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
-    //     KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
-    //     KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
-    //     KC_NO   , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,                            KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  , KC_NO  ,
-    //                                         KC_NO   , KC_NO  , KC_NO  ,          KC_NO  , KC_NO  , KC_NO
+    //     KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   ,                            KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   ,
+    //     KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   ,                            KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   ,
+    //     KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   ,                            KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   ,
+    //     KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   ,                            KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   , KC_NO   ,
+    //                                             KC_NO   , KC_NO   , KC_NO   ,        KC_NO   , KC_NO   , KC_NO   
     // ),
     // [_BLANK_TRNS] = LAYOUT(
-    //     KC_TRNS , KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    //     KC_TRNS , KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    //     KC_TRNS , KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    //     KC_TRNS , KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    //                                         KC_TRNS , KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS
-    // )
-};
+    //     KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,                            KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
+    //     KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,                            KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
+    //     KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,                            KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
+    //     KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,                            KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS , KC_TRNS ,
+    //                                             KC_TRNS , KC_TRNS , KC_TRNS ,        KC_TRNS , KC_TRNS , KC_TRNS 
+    // ),
 
 const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
     LAYOUT(

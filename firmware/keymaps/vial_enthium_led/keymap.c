@@ -7,17 +7,16 @@
 // NOTE There are 8 layers on this keyboard, 0 to 7, but 9 are defined in `my_rgb_layers`. This is to prevent the rp2040
 // led from staying on (red) at startup.
 
-// Left-hand home row mods; QUERTY
-#define GUI_A_Q LGUI_T(KC_A)
-#define ALT_S_Q LALT_T(KC_S)
-#define CTL_D_Q LCTL_T(KC_D)
-#define SFT_F_Q LSFT_T(KC_F)
-
-// Right-hand home row mods; QUERTY
-#define SFT_J_Q RSFT_T(KC_J)
-#define CTL_K_Q RCTL_T(KC_K)
-#define ALT_L_Q LALT_T(KC_L)
-#define GI_SN_Q RGUI_T(KC_SCLN)
+enum layers {
+    _BASE = 0,
+    _GAMING = 1,
+    _NAV = 2,
+    _MOUSE = 3,
+    _FUN = 4,
+    _SYM = 5,
+    _BLANK_TRNS = 6,
+    _UTIL = 7,
+};
 
 // Left-hand home row mods; ENTHIUM
 #define GUI_C_E LGUI_T(KC_C)
@@ -31,17 +30,6 @@
 #define ALT_N_E LALT_T(KC_N)
 #define GUI_S_E RGUI_T(KC_S)
 
-enum layers {
-    _BASE = 0,
-    _GAMING = 1,
-    _NAV = 2,
-    _MOUSE = 3,
-    _FUN = 4,
-    _SYM = 5,
-    _BLANK_TRNS = 6,
-    _UTIL = 7,
-};
-
 #define LT1_Z_E LT(_GAMING, KC_Z)
 #define LT2_Y_E LT(_NAV, KC_Y)
 #define LT3_O_E LT(_MOUSE, KC_O)
@@ -51,14 +39,14 @@ enum layers {
 #define LT7_V_E LT(_UTIL, KC_V)
 #define LM_SYM MO(_SYM)
 
-#define CUT C(KC_X)
-#define COPY C(KC_C)
-#define PASTE C(KC_V)
-#define FIND C(KC_F)
-#define SELALL C(KC_A)
+#define CUT LCTL(KC_X)
+#define COPY LCTL(KC_C)
+#define PASTE LCTL(KC_V)
+#define FIND LCTL(KC_F)
+#define SELALL LCTL(KC_A)
+#define SAVE LCTL(KC_S)
 #define TRM_CP LCTL(LSFT(KC_C)) // terminal copy
 #define TRM_PST LCTL(LSFT(KC_V)) // terminal paste
-#define SAVE C(KC_S)
 #define KRUN LSA(KC_F2)
 #define TTY1 LCA(KC_F1)
 #define TTY2 LCA(KC_F2)

@@ -317,7 +317,7 @@ def format_keymaps(out_layers, layer_names, rows, source_name):
                              (fmt(left), " " * 28, fmt(right)))
             else:
                 lines.append("        %s%s,%s%s" %
-                             (" " * 36, fmt(left), " " * 10, fmt(right)))
+                             (" " * 40, fmt(left), " " * 8, fmt(right)))
         lines.append("    ),")
     lines.append("};")
     return "\n".join(lines)
